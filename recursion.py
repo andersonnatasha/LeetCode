@@ -8,6 +8,8 @@ def tribonacci(n):
     Given n, return the value of Tn.
         >>> tribonacci(25)
         1389537
+        >>> tribonacci(37)
+        2082876103
     """
     cache = {}
     # Base case T_0 = 0, T_1 = 1, T_2 = 1
