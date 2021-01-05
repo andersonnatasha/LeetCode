@@ -31,6 +31,7 @@ def reverse(x):
 
 
 if __name__ == "__main__":
+    import doctest
 
     print()
     result = doctest.testmod()

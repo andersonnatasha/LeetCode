@@ -29,7 +29,6 @@ def romanToInt(s):
     1
     >>> romanToInt("LVIII")
     58
-
     """
 
     roman_to_int = {
