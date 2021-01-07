@@ -99,7 +99,7 @@ def isValid(s):
             openings.append(s[i])
         # else, must be a value, so check if the last item in openings is a match
         else:
-            # if openings is not empty and current charcter == the value for the dictionary key
+            # if openings is not empty and current character == the value for the dictionary key
             if openings and (s[i] == pairs[openings[-1]]):
                 openings.pop()
             else:
