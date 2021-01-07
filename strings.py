@@ -65,6 +65,49 @@ def romanToInt(s):
     return value
 
 
+def isValid(s):
+    """Given a string s containing just the characters
+    '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+    An input string is valid if:
+
+    Open brackets must be closed by the same type of brackets.
+    Open brackets must be closed in the correct order.
+    >>> isValid("()")
+    True
+    >>> isValid("((")
+    False
+    >>> isValid("[{()}])
+    True
+    >>> isValid("(")
+    False
+    """
+
+    # dictionary that had the pairs
+    pairs = {"(": ")", "{": "}", "[": "]"}
+
+    # if the first character isn't opening brace or the len of s if odd, return False
+    if s[0] not in pairs.keys() or len(s) % 2 != 0:
+        return False
+
+    # store the opening braces
+    openings = []
+
+    for i in range(len(s)):
+        # if the character is a key in pairs append to opens
+        if s[i] in pairs.keys():
+            openings.append(s[i])
+        # else, must be a value, so check if the last item in openings is a match
+        else:
+            # if openings is not empty and current charcter == the value for the dictionary key
+            if openings and (s[i] == pairs[openings[-1]]):
+                openings.pop()
+            else:
+                return False
+
+    return not openings
+
+
 if __name__ == "__main__":
     import doctest
 
