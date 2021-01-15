@@ -73,6 +73,39 @@ def countAndSay(n):
     return computing(countAndSay(n-1))
 
 
+def removeDuplicates(nums):
+    """Given a sorted array nums, remove the duplicates in-place such
+    that each element appears only once and returns the new length.
+
+    >>> removeDuplicates([0,0,1,1,1,2,2,3,3,4])
+    5
+    >>> removeDuplicates([])
+    0
+    >>> removeDuplicates([1])
+    1
+    >>> removeDuplicates([1,1,2])
+    2
+   """
+
+    if len(nums) == 0 or len(nums) == 1:
+        return len(nums)
+
+    def find_duplicates(nums_2, i):
+        # print(i, len(list))
+
+        if i == len(nums_2)-1:
+            return len(nums_2)
+
+        elif nums_2[i] == nums_2[i+1]:
+            nums_2.pop(i+1)
+            return find_duplicates(nums_2, i)
+
+        else:
+            return find_duplicates(nums_2, i+1)
+
+    return find_duplicates(nums, 0)
+
+
 if __name__ == "__main__":
     import doctest
 
