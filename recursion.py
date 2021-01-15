@@ -66,7 +66,7 @@ def countAndSay(n):
                     count = 1
                     say = string[i+1]
                     if i+1 == len(string)-1:
-                        countAndSay += "1" + say[-1]
+                        countAndSay += "1" + say
                         return countAndSay
         return countAndSay + str(count) + say
 
