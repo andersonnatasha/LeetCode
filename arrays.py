@@ -19,13 +19,7 @@ def findContentChildren(g, s):
 
     # put the lists in order
     greed_sorted = sorted(g)   # m log m
-    # [7,8,9,10]
     cookies_sorted = sorted(s)  # n log n
-    # [5,6,7,8]
-
-    # o(n) o(m)
-    # max of m,n
-    # max of m log m/n log n + max of o(n)/o(m)
 
     content_children = 0
 
@@ -38,8 +32,7 @@ def findContentChildren(g, s):
             cookies_sorted.pop(0)
     return content_children
 
-    # if greed is =< cookie then we can add one to content and then remove the first of both list and add           # one to content
-    # look at first in the list and if greed is larger than cookie then break / return content
+   # time complexity max of m log m/n log n + max of o(n)/o(m)
 
 
 if __name__ == '__main__':
