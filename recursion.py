@@ -91,7 +91,6 @@ def removeDuplicates(nums):
         return len(nums)
 
     def find_duplicates(nums_2, i):
-        # print(i, len(list))
 
         if i == len(nums_2)-1:
             return len(nums_2)
