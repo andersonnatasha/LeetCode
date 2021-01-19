@@ -78,15 +78,12 @@ def findDisappearedNumbers(nums):
     n = len(nums)
     range_set = set()
 
-    if n > 0:
-        for i in range(len(nums)):  # o(n)
-            range_set.add(i+1)
-        for i in range(len(nums)):  # o(n)
-            if nums[i] in range_set:  # o(1)
-                range_set.remove(nums[i])  # o(1)
-        return list(range_set)  # o(n)
-    else:
-        return nums
+    for i in range(len(nums)):  # o(n)
+        range_set.add(i+1)
+    for i in range(len(nums)):  # o(n)
+        if nums[i] in range_set:  # o(1)
+            range_set.remove(nums[i])  # o(1)
+    return list(range_set)  # o(n)
 
 
 if __name__ == '__main__':
