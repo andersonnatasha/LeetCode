@@ -125,16 +125,14 @@ def twoSum(nums, target):
 
     def find_sum(nums, target, i):
 
-        j = 0
+        j = i + 1
+
         while j < len(nums):
-            if i == j:
-                j += 1
-                continue
+            if nums[i] + nums[j] == target:
+                return [i, j]
             else:
-                if nums[i] + nums[j] == target:
-                    return [i, j]
-                else:
-                    j += 1
+                j += 1
+
         return find_sum(nums, target, i+1)
 
     return find_sum(nums, target, 0)
