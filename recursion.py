@@ -143,6 +143,7 @@ def twoSum(nums, target):
         return find_sum(nums, target, i+1)
 
     return find_sum(nums, target, 0)
+    # runtime of O(n^2)
 
 
 if __name__ == "__main__":
