@@ -119,6 +119,9 @@ def twoSum(nums, target):
     [1, 2]
     >>> twoSum([3,3],6)
     [0, 1]
+    >>> twoSum([3,3,1],7)
+    'No matches'
+
     """
 
     if len(nums) == 2:
@@ -127,6 +130,9 @@ def twoSum(nums, target):
     def find_sum(nums, target, i):
 
         j = i + 1
+
+        if j == len(nums):
+            return "No matches"
 
         while j < len(nums):
             if nums[i] + nums[j] == target:
