@@ -177,8 +177,6 @@ def isSameTree(p, q):
         return True
     if not p or not q:
         return False
-    if not p or not q:
-        return False
     if p.val != q.val:
         return False
     else:
