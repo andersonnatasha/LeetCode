@@ -2,7 +2,7 @@ tribonacci_cache = {}
 
 
 def tribonacci(n):
-    """The Tribonacci sequence Tn is defined as follows: 
+    """The Tribonacci sequence Tn is defined as follows:
 
     T0 = 0, T1 = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.
     Given n, return the value of Tn.
@@ -144,6 +144,26 @@ def twoSum(nums, target):
 
     return find_sum(nums, target, 0)
     # runtime of O(n^2)
+
+
+def isSymmetric(root):
+    """Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center)."""
+
+    if not root:
+        return True
+
+    def check_balance(node_1, node_2):
+        if not node_1 and not node_2:
+            return True
+        if not node_1 or not node_2:
+            return False
+        if node_1.val != node_2.val:
+            print(node_1.val, node_2.val)
+            return False
+        else:
+            return check_balance(node_1.left, node_2.right) and check_balance(node_1.right, node_2.left)
+
+    return check_balance(root.left, root.right)
 
 
 if __name__ == "__main__":
