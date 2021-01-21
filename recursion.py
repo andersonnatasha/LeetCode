@@ -158,7 +158,6 @@ def isSymmetric(root):
         if not node_1 or not node_2:
             return False
         if node_1.val != node_2.val:
-            print(node_1.val, node_2.val)
             return False
         else:
             return check_balance(node_1.left, node_2.right) and check_balance(node_1.right, node_2.left)
@@ -181,6 +180,7 @@ def isSameTree(p, q):
         return False
     else:
         return isSameTree(p.right, q.right) and isSameTree(p.left, q.left)
+    # Time complexity = O(N)
 
 
 if __name__ == "__main__":
