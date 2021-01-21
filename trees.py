@@ -10,7 +10,6 @@ def isSymmetric(root):
         if not node_1 or not node_2:
             return False
         if node_1.val != node_2.val:
-            print(node_1.val, node_2.val)
             return False
         else:
             return check_balance(node_1.left, node_2.right) and check_balance(node_1.right, node_2.left)
@@ -34,3 +33,19 @@ def isSameTree(p, q):
     else:
         return isSameTree(p.right, q.right) and isSameTree(p.left, q.left)
     # Time complexity = O(N)
+
+
+def searchBST(root, val):
+    """You are given the root of a binary search tree (BST) and an integer val.
+    Find the node in the BST that the node's value equals val and return the
+    subtree rooted with that node. If such a node does not exist, return null."""
+
+    if root:
+        if root.val == val:
+            return root
+        elif root.val < val:
+            return self.searchBST(root.right, val)
+        else:
+            return self.searchBST(root.left, val)
+
+    return
