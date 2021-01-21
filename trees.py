@@ -29,11 +29,8 @@ def isSameTree(p, q):
         return True
     if not p or not q:
         return False
-    if not p and not q:
-        return True
-    if not p or not q:
-        return False
     if p.val != q.val:
         return False
     else:
-        return self.isSameTree(p.right, q.right) and self.isSameTree(p.left, q.left)
+        return isSameTree(p.right, q.right) and isSameTree(p.left, q.left)
+    # Time complexity = O(N)
