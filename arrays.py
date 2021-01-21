@@ -105,15 +105,15 @@ def twoSum(nums, target):
 
     """
 
-    nums_as_dict = {}
+    nums_as_dict = {}  # O(1)
 
     for index, num in enumerate(nums):
-        difference = target - num
-        if difference in nums_as_dict.values() and index != nums.index(difference):
-            return [nums.index(difference), index]
-        nums_as_dict[index] = num
+        difference = target - num  # O(1) * N --> O(N)
+        if difference in nums_as_dict.values() and index != nums.index(difference):  # O(1) * N ---> O(N)
+            return [nums.index(difference), index]  # (1)
+        nums_as_dict[index] = num  # O(1) * N-1 --> O(N)
 
-    return "No matches"
+    return "No matches"  # O(1)
 
     # runtime of O(n)
 
