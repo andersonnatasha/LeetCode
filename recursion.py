@@ -182,7 +182,7 @@ def isSameTree(p, q):
     if p.val != q.val:
         return False
     else:
-        return self.isSameTree(p.right, q.right) and self.isSameTree(p.left, q.left)
+        return isSameTree(p.right, q.right) and isSameTree(p.left, q.left)
 
 
 if __name__ == "__main__":
