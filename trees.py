@@ -44,8 +44,8 @@ def searchBST(root, val):
         if root.val == val:
             return root
         elif root.val < val:
-            return self.searchBST(root.right, val)
+            return searchBST(root.right, val)
         else:
-            return self.searchBST(root.left, val)
+            return searchBST(root.left, val)
 
     return
