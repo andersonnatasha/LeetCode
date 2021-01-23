@@ -77,7 +77,7 @@ def isValid(s):
     True
     >>> isValid("((")
     False
-    >>> isValid("[{()}])
+    >>> isValid("[{()}]")
     True
     >>> isValid("(")
     False
@@ -106,6 +106,25 @@ def isValid(s):
                 return False
 
     return not openings
+
+
+def reverseString(s):
+    """ Do not return anything, modify s in-place instead.
+
+    >>> reverseString(['h','e','l','l','o'])
+    ['o', 'l', 'l', 'e', 'h']
+    >>> reverseString(["H","a","n","n","a","h"])
+    ['h', 'a', 'n', 'n', 'a', 'H']
+    """
+
+    i = 0
+    j = len(s) - 1
+    while j >= i:
+        s[i], s[j] = s[j], s[i]
+        j -= 1
+        i += 1
+
+    return s
 
 
 if __name__ == "__main__":
