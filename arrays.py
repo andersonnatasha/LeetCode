@@ -118,6 +118,31 @@ def twoSum(nums, target):
     # runtime of O(n)
 
 
+def lengthOfLastWord(s):
+    """Given a string s consists of some words separated by spaces,
+    return the length of the last word in the string.
+    If the last word does not exist, return 0.
+    A word is a maximal substring consisting of non-space characters only.
+    >>> lengthOfLastWord('Hello World')
+    5
+    >>> lengthOfLastWord('a  ')
+    1
+    >>> lengthOfLastWord('   ')
+    0
+    """
+
+    s = s.split(" ")
+
+    end_pointer = -1
+
+    while -(end_pointer) <= len(s):
+        if len(s[end_pointer]) != 0:
+            return len(s[end_pointer])
+        end_pointer -= 1
+
+    return 0
+
+
 if __name__ == '__main__':
     import doctest
 
