@@ -199,6 +199,20 @@ def searchBST(root, val):
     return
 
 
+def sumOfLeftLeaves(root):
+    """Find the sum of all left leaves in a given binary tree."""
+
+    sum = 0
+
+    if not root:
+        return 0
+
+    if root.left and (not root.left.left and not root.left.right):
+        sum += root.left.val
+
+    return sum + sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right)
+
+
 if __name__ == "__main__":
     import doctest
 
