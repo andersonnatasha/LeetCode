@@ -143,6 +143,25 @@ def lengthOfLastWord(s):
     return 0
 
 
+def rotate(nums, k):
+    """
+    Given an array, rotate the array to the right by k steps,
+    where k is non-negative.
+    >>> rotate([1,2,3,4,5,6,7], 3)
+    [5, 6, 7, 1, 2, 3, 4]
+    >>> rotate([1,2,3,4,5,6,7], 20)
+    [2, 3, 4, 5, 6, 7, 1]
+    """
+
+    k %= len(nums)
+
+    for i in range(k):
+        number = nums.pop()
+        nums.insert(0, number)
+
+    return nums
+
+
 if __name__ == '__main__':
     import doctest
 
