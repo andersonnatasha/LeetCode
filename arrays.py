@@ -162,6 +162,11 @@ def rotate(nums, k):
     return nums
 
 
+print("Hello, World. I'm Natasha.")
+print()
+print("Welcome to my Repo.")
+
+
 if __name__ == '__main__':
     import doctest
 

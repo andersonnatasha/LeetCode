@@ -63,3 +63,27 @@ def sumOfLeftLeaves(root):
         sum += root.left.val
 
     return sum + sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right)
+
+
+def leafSimilar(root1: TreeNode, root2):
+    """Consider all the leaves of a binary tree, from left to right order,
+    the values of those leaves form a leaf value sequence."""
+
+    def add_leaf_to_sequence(node, sequence):
+
+        if not node:
+            return
+
+        if not node.left and not node.right:
+            sequence.append(node.val)
+
+        else:
+            add_leaf_to_sequence(node.left, sequence)
+            add_leaf_to_sequence(node.right, sequence)
+
+        return sequence
+
+    sequence1 = add_leaf_to_sequence(root1, [])
+    sequence2 = add_leaf_to_sequence(root2, [])
+
+    return sequence1 == sequence2
