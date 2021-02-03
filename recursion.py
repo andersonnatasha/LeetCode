@@ -237,6 +237,40 @@ def leafSimilar(root1: TreeNode, root2):
     return sequence1 == sequence2
 
 
+class IsBalancedSolution:
+
+    def __init__(self, is_balanced):
+        self.is_balanced = True
+
+    def isBalanced(self, root):
+
+        if not root:
+            return True
+
+        def get_height(node, height):
+
+            if not node:
+                return height
+
+            left = get_height(node.left, height + 1)
+            right = get_height(node.right, height + 1)
+
+            if self.is_balanced == True:
+
+                if left == right:
+                    self.is_balanced = True
+                elif abs(right - left) == 1:
+                    self.is_balanced = True
+                else:
+                    self.is_balanced = False
+
+            return max(left, right)
+
+        get_height(root, 0)
+
+        return self.is_balanced
+
+
 if __name__ == "__main__":
     import doctest
 
