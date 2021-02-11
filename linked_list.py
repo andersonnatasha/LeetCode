@@ -36,6 +36,7 @@ def mergeTwoLists(l1, l2):
 
     return merged_list.next
 
+
 def hasCycle(head):
     """Given head, the head of a linked list, determine if the linked list has a cycle in it.
 
@@ -51,7 +52,7 @@ def hasCycle(head):
 
     while fast_node != None and fast_node.next != None:
         if fast_node == slow_node:
-            return  True
+            return True
         fast_node = fast_node.next.next
         slow_node = slow_node.next
     return False
