@@ -90,11 +90,15 @@ class Solution:
         node.next = node.next.next
 
 
-if __name__ == "__main__":
-    import doctest
+def reverseList(head):
+    """Reverse a singly linked list."""
 
-    print()
-    result = doctest.testmod()
-    if not result.failed:
-        print("ALL TESTS PASSED!")
-    print()
+    prev = None
+
+    while head:
+        next_node = head.next
+        head.next = prev
+        prev = head
+        head = next_node
+
+    return prev
