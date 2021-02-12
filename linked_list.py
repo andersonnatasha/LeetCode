@@ -58,6 +58,26 @@ def hasCycle(head):
     return False
 
 
+def removeElements(head, val):
+    """"Remove all elements from a linked list of integers that have value val."""
+
+    if not head:
+        return
+
+    while head and head.val == val:
+        head = head.next
+
+    current = head
+
+    while current and current.next:
+        if current.next.val == val:
+            current.next = current.next.next
+        else:
+            current = current.next
+
+    return head
+
+
 class Solution:
     def deleteNode(self, node):
         """ Write a function to delete a node in a singly-linked list.
