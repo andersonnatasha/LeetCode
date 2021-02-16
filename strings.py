@@ -126,7 +126,8 @@ def reverseString(s):
 
     return s
 
-def isSubsequence(s,t):
+
+def isSubsequence(s, t):
     """Given two strings s and t, check if s is a subsequence of t.
     A subsequence of a string is a new string that is formed from the original string by deleting some
     (can be none) of the characters without disturbing the relative positions of the remaining characters.
@@ -149,11 +150,20 @@ def isSubsequence(s,t):
             s_pointer += 1
             t_pointer += 1
         else:
-            t_pointer +=1
+            t_pointer += 1
 
     return s_pointer == len(s)
 
 
+def defangIPaddr(address):
+    """Given a valid (IPv4) IP address, return a defanged version of that IP address.
+    A defanged IP address replaces every period "." with "[.]".
+    >>> defangIPaddr('1.1.1.1')
+    '1[.]1[.]1[.]1'
+
+    """
+
+    return "[.]".join(address.split("."))
 
 
 if __name__ == "__main__":
