@@ -201,29 +201,42 @@ def balancedStringSplit(s):
     return num_balanced_strs
 
 
-def mergeInBetween(list1, a, b, list2):
-    """You are given two linked lists: list1 and list2 of sizes n and m respectively.
+def halvesAreAlike(s):
+    """You are given a string s of even length.
+    Split this string into two halves of equal lengths,
+    and let a be the first half and b be the second half.
 
-        Remove list1's nodes from the ath node to the bth node, and put list2 in their place."""
+    Two strings are alike if they have the same number of vowels
+    ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U').
+    Notice that s contains uppercase and lowercase letters.
 
-    end = list1
-    for i in range(b + 1):
-        end = end.next
+    Return true if a and b are alike. Otherwise, return false
 
-    templ2 = list2
+    >>> halvesAreAlike("book")
+    True
+    >>> halvesAreAlike("textbook")
+    False
+    >>> halvesAreAlike("MerryChristmas")
+    False
+    >>> halvesAreAlike("AbCdEfGh")
+    True
+    """
 
-    while templ2 and templ2.next:
-        templ2 = templ2.next
+    vowels = set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
 
-    templ2.next = end
+    a = s[:(len(s)//2)]
+    b = s[(len(s)//2):]
 
-    beginning = list1
-    for i in range(a - 1):
-        beginning = beginning.next
+    a_count = 0
+    b_count = 0
 
-    beginning.next = list2
+    for i in range(len(a)):
+        if a[i] in vowels:
+            a_count += 1
+        if b[i] in vowels:
+            b_count += 1
 
-    return list1
+    return a_count == b_count
 
 
 if __name__ == "__main__":
