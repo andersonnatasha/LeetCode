@@ -135,7 +135,6 @@ def isSubsequence(s, t):
 
     >>> isSubsequence("abc", "ahbgdc")
     True
-
     >>> isSubsequence("abx", "ahbgdc")
     False
     >>> isSubsequence("aa", "ba")
@@ -158,9 +157,9 @@ def isSubsequence(s, t):
 def defangIPaddr(address):
     """Given a valid (IPv4) IP address, return a defanged version of that IP address.
     A defanged IP address replaces every period "." with "[.]".
+
     >>> defangIPaddr('1.1.1.1')
     '1[.]1[.]1[.]1'
-
     """
 
     return "[.]".join(address.split("."))
@@ -237,6 +236,32 @@ def halvesAreAlike(s):
             b_count += 1
 
     return a_count == b_count
+
+
+def countConsistentStrings(allowed, words):
+    """You are given a string allowed consisting of distinct characters and an array of strings words.
+    A string is consistent if all characters in the string appear in the string allowed.
+
+    Return the number of consistent strings in the array words.
+
+    >>> countConsistentStrings("ab", ["ad","bd","aaab","baa","badab"])
+    2
+    >>> countConsistentStrings("abc", ["a","b","c","ab","ac","bc","abc"])
+    7
+    >>> countConsistentStrings("cad", ["cc","acd","b","ba","bac","bad","ac","d"])
+    4
+    """
+
+    allowed = set(allowed)
+
+    count_ = 0
+
+    for word in words:
+        word = set(word)
+        if len((word - allowed)) == 0:
+            count_ += 1
+
+    return count_
 
 
 if __name__ == "__main__":
