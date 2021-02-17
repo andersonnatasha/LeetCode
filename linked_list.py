@@ -102,3 +102,28 @@ def reverseList(head):
         head = next_node
 
     return prev
+
+
+def mergeInBetween(list1, a, b, list2):
+    """You are given two linked lists: list1 and list2 of sizes n and m respectively.
+
+        Remove list1's nodes from the ath node to the bth node, and put list2 in their place."""
+
+    end = list1
+    for i in range(b + 1):
+        end = end.next
+
+    templ2 = list2
+
+    while templ2 and templ2.next:
+        templ2 = templ2.next
+
+    templ2.next = end
+
+    beginning = list1
+    for i in range(a - 1):
+        beginning = beginning.next
+
+    beginning.next = list2
+
+    return list1
