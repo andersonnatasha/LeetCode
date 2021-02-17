@@ -166,6 +166,40 @@ def defangIPaddr(address):
     return "[.]".join(address.split("."))
 
 
+def balancedStringSplit(s):
+    """Balanced strings are those that have an equal quantity of 'L' and 'R' characters.
+
+    Given a balanced string s, split it in the maximum amount of balanced strings.
+
+    Return the maximum amount of split balanced strings.
+    >>> balancedStringSplit("RLRRLLRLRL")
+    4
+    >>> balancedStringSplit("RLLLLRRRLR")
+    3
+    >>> balancedStringSplit("LLLLRRRR")
+    1
+    >>> balancedStringSplit("RLRRRLLRLL")
+    2
+
+    """
+    num_blanced_strs = 0
+    pairs = {"R": "L", "L": "R"}
+
+    here = 0
+    explore = 0
+
+    while here < len(s) - 1:
+        pair = pairs[s[here]]
+        if s[explore] == pair:
+            if s[here:explore + 1].count('L') == s[here:explore + 1].count('R'):
+                num_blanced_strs += 1
+                here = explore + 1
+                explore = here + 1
+                continue
+        explore += 1
+    return num_blanced_strs
+
+
 if __name__ == "__main__":
     import doctest
 
