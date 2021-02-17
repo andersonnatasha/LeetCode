@@ -264,6 +264,47 @@ def countConsistentStrings(allowed, words):
     return count_
 
 
+def largeGroupPositions(s):
+    """In a string s of lowercase letters, these letters form consecutive groups of the same character.
+
+        For example, a string like s = "abbxxxxzyy" has the groups "a", "bb", "xxxx", "z", and "yy".
+
+        A group is identified by an interval [start, end], where start and end denote the start and end
+        indices (inclusive) of the group. In the above example, "xxxx" has the interval [3,6].
+
+        A group is considered large if it has 3 or more characters.
+
+        Return the intervals of every large group sorted in increasing order by start index.
+
+        >>> largeGroupPositions("abbxxxxzzy")
+        [[3, 6]]
+        >>> largeGroupPositions("abc")
+        []
+        >>> largeGroupPositions("abcdddeeeeaabbbcd")
+        [[3, 5], [6, 9], [12, 14]]
+        >>> largeGroupPositions("aba")
+        []
+        >>> largeGroupPositions("aaa")
+        [[0, 2]]
+        """
+
+    start = 0
+    slider = 0
+    ans = []
+
+    while start < len(s) - 1:
+
+        while (slider <= len(s) - 1) and s[start] == s[slider]:
+            slider += 1
+
+        if len(s[start:slider]) >= 3:
+            ans.append([start, slider - 1])
+
+        start = slider
+
+    return ans
+
+
 if __name__ == "__main__":
     import doctest
 
