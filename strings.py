@@ -305,6 +305,46 @@ def largeGroupPositions(s):
     return ans
 
 
+def lengthOfLongestSubstring(s):
+    """Given a string s, find the length of the longest substring without repeating characters.
+    >>> lengthOfLongestSubstring("abcabcbb")
+    3
+    >>> lengthOfLongestSubstring("bbbbb")
+    1
+    >>> lengthOfLongestSubstring("pwwkew")
+    3
+    >>> lengthOfLongestSubstring("")
+    0
+    """
+
+    # keep track of which letters seen and their index in dict
+    seen_letters = {}
+    # keep track of longest string len
+    longest_substring = 0
+    # keep track of substring currently building
+    substring = []
+    s = list(s)
+
+    for i, letter in enumerate(s):
+        # if the letter is not in dict, add it to the substring and add to dic
+        if seen_letters.get(letter) == None or seen_letters.get(letter) < seen_letters.get(substring[0]):
+            seen_letters[letter] = i
+            substring.append(letter)
+    # if next letter is in the dict,
+        else:
+            # check to see if the substrng is longer than the longest substring, if so update longest
+            if len(substring) > longest_substring:
+                longest_substring = len(substring)
+            substring = (s[seen_letters[letter] + 1:i])
+            substring.append(letter)
+            seen_letters[letter] = i
+
+    if len(substring) > longest_substring:
+        longest_substring = len(substring)
+
+    return longest_substring
+
+
 if __name__ == "__main__":
     import doctest
 
