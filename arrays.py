@@ -162,6 +162,26 @@ def rotate(nums, k):
     return nums
 
 
+def shuffle(nums, n):
+    """Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+
+    Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+
+    >>> shuffle([2,5,1,3,4,7], 3)
+    [2, 3, 5, 4, 1, 7]
+    """
+
+    first_half = nums[:len(nums)//2]
+    second_half = nums[len(nums)//2:]
+    new_list = []
+
+    for i, num in enumerate(first_half):
+        new_list.append(first_half[i])
+        new_list.append(second_half[i])
+
+    return new_list
+
+
 print("Hello, World. I'm Natasha.")
 print()
 print("Welcome to my Repo.")
