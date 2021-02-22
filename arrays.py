@@ -169,6 +169,9 @@ def shuffle(nums, n):
 
     >>> shuffle([2,5,1,3,4,7], 3)
     [2, 3, 5, 4, 1, 7]
+
+    >>> shuffle([2,5,1,3,4,7], 3)
+    [2, 3, 5, 4, 1, 7]
     """
 
     first_half = nums[:len(nums)//2]
@@ -182,9 +185,29 @@ def shuffle(nums, n):
     return new_list
 
 
-print("Hello, World. I'm Natasha.")
-print()
-print("Welcome to my Repo.")
+def checkIfExist(arr):
+    """Given an array arr of integers,
+    check if there exists two integers N and M
+    such that N is the double of M ( i.e. N = 2 * M).
+    >>> checkIfExist([10,2,5,3])
+    True
+    >>> checkIfExist([7,1,14,11])
+    True
+    >>> checkIfExist([3,1,7,11])
+    False
+    """
+
+    doubles = {}
+
+    arr = sorted(arr)
+
+    for i, num in enumerate(arr):
+        doubles[i] = num * 2
+
+    for i, num in enumerate(arr):
+        for key, value in doubles.items():
+            if num == value and i != key:
+                return True
 
 
 if __name__ == '__main__':
