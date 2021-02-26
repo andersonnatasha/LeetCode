@@ -289,17 +289,17 @@ def generate(numRows):
     [[1]]
     """
 
-    array = [1]
     pascal = []
-    pascal.append(array)
 
-    if numRows == 1:
-        return pascal
-
-    for i in range(numRows-1):
-        array = [0] + array + [0]
-        array = [sum(array[i:i+2]) for i in range(len(array)-1)]
-        pascal.append(array)
+    for i in range(numRows):
+        if i == 0:
+            array = [i + 1]
+            pascal.append(array)
+            continue
+        else:
+            array = [0] + array + [0]
+            array = [sum(array[i:i+2]) for i in range(len(array)-1)]
+            pascal.append(array)
     return pascal
 
 
