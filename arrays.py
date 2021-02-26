@@ -281,6 +281,28 @@ def countSubstrings(s):
     return count
 
 
+def generate(numRows):
+    """Given an integer numRows, return the first numRows of Pascal's triangle.(numRows will be at least 1)
+    >>> generate(5)
+    [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]
+    >>> generate(1)
+    [[1]]
+    """
+
+    array = [1]
+    pascal = []
+    pascal.append(array)
+
+    if numRows == 1:
+        return pascal
+
+    for i in range(numRows-1):
+        array = [0] + array + [0]
+        array = [sum(array[i:i+2]) for i in range(len(array)-1)]
+        pascal.append(array)
+    return pascal
+
+
 if __name__ == '__main__':
     import doctest
 
