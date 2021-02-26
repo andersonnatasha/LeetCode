@@ -237,6 +237,50 @@ def sumOddLengthSubarrays(arr):
     return ans
 
 
+def countSubstrings(s):
+    """Given a string, your task is to count how many palindromic substrings in this string.
+
+    The substrings with different start indexes or end indexes are counted as different
+    substrings even they consist of same characters.
+
+    >>> countSubstrings("abc")
+    3
+    >>> countSubstrings("aaa")
+    6
+    >>> countSubstrings("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    4656
+
+    """
+
+    def is_pal(s):
+        start = 0
+        end = len(s) - 1
+
+        while start <= end:
+            if s[start] != s[end]:
+                return False
+            start += 1
+            end -= 1
+        return True
+
+    substrings = []
+    count = 0
+    seen = set()
+
+    for i in range(len(s)):
+        substrings.extend([s[j:j+(i+1)] for j in range(len(s) - (i))])
+
+    for substring in substrings:
+        if substring in seen:
+            count += 1
+            continue
+        if is_pal(substring) == True:
+            count += 1
+            seen.add(substring)
+
+    return count
+
+
 if __name__ == '__main__':
     import doctest
 
