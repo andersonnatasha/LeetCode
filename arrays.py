@@ -303,6 +303,26 @@ def generate(numRows):
     return pascal
 
 
+def getRow(rowIndex):
+    """Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
+    >>> getRow(3)
+    [1, 3, 3, 1]
+    >>> getRow(0)
+    [1]
+    >>> getRow(1)
+    [1, 1]
+
+    """
+
+    for i in range(rowIndex+1):
+        if i == 0:
+            array = [1]
+        else:
+            array = [0] + array + [0]
+            array = [sum(array[i:i+2]) for i in range(len(array)-1)]
+    return array
+
+
 if __name__ == '__main__':
     import doctest
 
