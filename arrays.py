@@ -208,6 +208,33 @@ def checkIfExist(arr):
         for key, value in doubles.items():
             if num == value and i != key:
                 return True
+    return False
+
+
+def sumOddLengthSubarrays(arr):
+    """Given an array of positive integers arr,
+    calculate the sum of all possible odd-length subarrays.
+
+    A subarray is a contiguous subsequence of the array.
+    Return the sum of all odd-length subarrays of arr.
+
+    >>> sumOddLengthSubarrays([1,4,2,5,3])
+    58
+    >>> sumOddLengthSubarrays([1,2])
+    3
+    >>> sumOddLengthSubarrays([10,11,12])
+    66
+
+    """
+
+    ans = 0
+
+    for i in range(1, len(arr)+1):
+        if i % 2 != 0:
+            ans += sum([sum(x) for x in [arr[j:j+i]
+                                         for j in range(len(arr) - (i-1))]])
+
+    return ans
 
 
 if __name__ == '__main__':
