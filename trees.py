@@ -48,8 +48,6 @@ def searchBST(root, val):
         else:
             return searchBST(root.left, val)
 
-    return
-
 
 def sumOfLeftLeaves(root):
     """Find the sum of all left leaves in a given binary tree."""
