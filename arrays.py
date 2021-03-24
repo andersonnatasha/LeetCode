@@ -13,24 +13,23 @@ def findContentChildren(g, s):
     0
     """
 
-    # length check to see if there are cookies and if not return 0
-    if len(s) == 0:
-        return 0
+    count = 0
 
-    # put the lists in order
-    greed_sorted = sorted(g)   # m log m
-    cookies_sorted = sorted(s)  # n log n
+    g = sorted(g)
+    s = sorted(s)
 
-    content_children = 0
+    pointer_g = len(g) - 1
+    pointer_s = len(s) - 1
 
-    while cookies_sorted and greed_sorted:
-        if greed_sorted[0] <= cookies_sorted[0]:
-            content_children += 1
-            greed_sorted.pop(0)
-            cookies_sorted.pop(0)
+    while pointer_g >= 0 and pointer_s >= 0:
+        if s[pointer_s] >= g[pointer_g]:
+            count += 1
+            pointer_s -= 1
+            pointer_g -= 1
         else:
-            cookies_sorted.pop(0)
-    return content_children
+            pointer_g -= 1
+
+    return count
 
    # time complexity max of m log m/n log n + max of o(n)/o(m)
 
