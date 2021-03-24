@@ -74,15 +74,10 @@ def findDisappearedNumbers(nums):
     []
     """
 
-    n = len(nums)
-    range_set = set()
+    nums_in_range = set([x for x in range(1, len(nums)+1)])
+    nums = set(nums)
 
-    for i in range(len(nums)):  # o(n)
-        range_set.add(i+1)
-    for i in range(len(nums)):  # o(n)
-        if nums[i] in range_set:  # o(1)
-            range_set.remove(nums[i])  # o(1)
-    return list(range_set)  # o(n)
+    return list(nums_in_range - nums)
 
 
 def twoSum(nums, target):
@@ -130,16 +125,12 @@ def lengthOfLastWord(s):
     0
     """
 
-    s = s.split(" ")
+    words = s.split()
 
-    end_pointer = -1
+    if not words:
+        return 0
 
-    while -(end_pointer) <= len(s):
-        if len(s[end_pointer]) != 0:
-            return len(s[end_pointer])
-        end_pointer -= 1
-
-    return 0
+    return len(words[-1])
 
 
 def rotate(nums, k):
