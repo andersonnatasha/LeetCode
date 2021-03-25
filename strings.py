@@ -30,39 +30,36 @@ def romanToInt(s):
     >>> romanToInt("LVIII")
     58
     """
-
-    roman_to_int = {
+    symbol_to_value = {
         "I": 1,
         "V": 5,
         "X": 10,
         "L": 50,
         "C": 100,
         "D": 500,
-        "M": 1000,
+        "M": 1000
     }
 
-    value = 0
-
     if len(s) == 1:
-        return roman_to_int[s]
+        return symbol_to_value[s]
 
-    # Otherwise, check two values at once
-    i = 0
-    while i < len(s)-1:
-        # Check if first > second
-        if roman_to_int[s[i]] >= roman_to_int[s[i+1]]:
-            # if so, add value of first to value
-            value += roman_to_int[s[i]]
-            i += 1
-            if i == len(s)-1:
-                value += roman_to_int[s[i]]
-        else:
-            # if not then value of second minus value of first = value add 2 to [i]
-            value += (roman_to_int[s[i+1]] - roman_to_int[s[i]])
-            i += 2
-            if i == len(s)-1:
-                value += roman_to_int[s[i]]
-    return value
+    total = 0
+
+    i = 1
+    while i <= len(s) - 1:
+        if i != 0:
+            if symbol_to_value[s[i-1]] >= symbol_to_value[s[i]]:
+                total += symbol_to_value[s[i-1]]
+                i += 1
+            else:
+                total += symbol_to_value[s[i]] - symbol_to_value[s[i-1]]
+                i += 2
+        print(total)
+
+    if symbol_to_value[s[-1]] <= symbol_to_value[s[-2]]:
+        total += symbol_to_value[s[-1]]
+
+    return total
 
 
 def isValid(s):
